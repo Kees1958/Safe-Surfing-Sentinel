@@ -1,0 +1,43 @@
+/* ── ui/popup.css — Safe Surfing Sentinel popup (uBD-style, zero configuration) ── */
+:root { --popup-w: 320px; --switch-w: 44px; --switch-h: 24px; }
+body { width: var(--popup-w); }
+
+/* ── Header: icon, site name + status title, on/off switch ── */
+.head { display: flex; align-items: center; gap: 10px; padding: 14px var(--pad); border-bottom: 1px solid var(--border); }
+.status-icon { flex-shrink: 0; }
+.head-text { flex: 1; min-width: 0; }
+.site-host { font-size: 14px; font-weight: 700; color: var(--bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.status-title { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+/* Toggle switch — "off" means whitelisted (every protection off on this site). */
+.switch { position: relative; display: inline-block; width: var(--switch-w); height: var(--switch-h); flex-shrink: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch .slider { position: absolute; inset: 0; background: var(--border-2); border-radius: var(--switch-h); cursor: pointer; transition: background 0.15s; }
+.switch .slider::before {
+  content: ""; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px;
+  background: var(--bright); border-radius: 50%; transition: transform 0.15s;
+}
+.switch input:checked + .slider { background: var(--mint); }
+.switch input:checked + .slider::before { transform: translateX(20px); background: var(--bg); }
+.switch input:disabled + .slider { opacity: 0.35; cursor: not-allowed; }
+.kbd-nav .switch input:focus-visible + .slider { outline: 2px solid var(--bright); outline-offset: 2px; }
+
+.status-detail { margin: 10px var(--pad) 0; font-size: 12px; line-height: 1.4; color: var(--bright); }
+#popupStatus { margin: 6px var(--pad) 0; }
+
+/* ── "This page" box: site risk, tamper rating, Continue once ── */
+.page-box { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; padding: 10px var(--pad); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.page-line { display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: var(--radius); font-size: 12px; font-weight: 600; margin: 0; }
+.page-line-row { flex-direction: row; align-items: center; justify-content: space-between; gap: 8px; }
+.page-one-line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.page-why { font-weight: 400; color: var(--muted); }
+.page-line.suspect { color: var(--suspect-text); background: var(--suspect-bg); }
+.page-line.danger  { color: var(--danger-text); background: var(--danger-bg); }
+.page-muted { color: var(--muted); font-weight: 400; border: 1px solid var(--border); }
+
+.blocked-text { margin: 10px var(--pad) 0; font-size: 11px; color: var(--dim); min-height: 1em; }
+
+/* ── Footer: Tamper details / Whitelist ── */
+.foot { display: flex; justify-content: space-between; align-items: center; padding: 10px var(--pad) 14px; margin-top: 4px; }
+.link-btn { background: none; border: none; color: var(--link); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0; }
+.link-btn:hover { color: var(--bright); }

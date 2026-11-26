@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- ── ui/popup.html — Safe Surfing Sentinel toolbar popup ───────────────────────
+     Zero configuration (SSS 1.0.0): the only thing the user can change here is the
+     whitelist switch for the current site. Everything else is a status report —
+     the icon colour already says most of it; this just explains it in words. ─── -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Safe Surfing Sentinel</title>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="head">
+    <img id="statusIcon" class="status-icon" alt="" width="32" height="32">
+    <div class="head-text">
+      <div id="siteHost" class="site-host">—</div>
+      <div id="statusTitle" class="status-title">—</div>
+    </div>
+    <label class="switch" title="Off on this site">
+      <input type="checkbox" id="whitelistToggle">
+      <span class="slider" aria-hidden="true"></span>
+    </label>
+  </header>
+
+  <p id="statusDetail" class="status-detail"></p>
+  <p id="popupStatus" class="status-line" role="status" hidden></p>
+
+  <section id="pageBox" class="page-box" hidden>
+    <div class="section-title">This page</div>
+    <p id="pageRisk" class="page-line" hidden>
+      <span id="pageRiskText"></span>
+      <span id="pageRiskWhy" class="page-why"></span>
+    </p>
+    <p id="pageTamper" class="page-line page-line-row" hidden>
+      <span id="pageTamperText"></span>
+      <span id="pageTamperWorst" class="page-one-line"></span>
+    </p>
+    <p id="pageContinued" class="page-line page-muted" hidden>Continuing once — protections resume on the next visit</p>
+  </section>
+
+  <p id="blockedText" class="blocked-text"></p>
+
+  <footer class="foot">
+    <button id="tamperDetailsBtn" type="button" class="link-btn" hidden>Tamper details</button>
+    <button id="whitelistBtn" type="button" class="link-btn">Whitelist…</button>
+  </footer>
+
+  <script src="focus-ring.js" type="module"></script>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Safe Surfing Sentinel",
+  "short_name": "SSS",
+  "version": "1.0.2",
+  "description": "Zero-configuration browser protection which warns you for scams, snooping and skimming risks",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "webNavigation",
+    "webRequest",
+    "tabs",
+    "scripting",
+    "alarms",
+    "activeTab"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none';"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "ui/popup.html",
+    "default_title": "Safe Surfing Sentinel",
+    "default_icon": {
+      "16": "icons/sss_on_16.png",
+      "32": "icons/sss_on_32.png",
+      "48": "icons/sss_on_48.png",
+      "128": "icons/sss_on_128.png"
+    }
+  },
+  "options_ui": {
+    "page": "ui/whitelist.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/sss_on_16.png",
+    "32": "icons/sss_on_32.png",
+    "48": "icons/sss_on_48.png",
+    "128": "icons/sss_on_128.png"
+  }
+}

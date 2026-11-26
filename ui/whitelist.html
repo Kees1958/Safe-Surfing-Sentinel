@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- ── ui/whitelist.html — Safe Surfing Sentinel whitelist page ───────────────────
+     The only settings page SSS has (options_ui, manifest.json): the whitelist is the one
+     thing the user can edit. Session-only entries (an already auto-elevated site — adult,
+     abused TLD, or risky domain — whitelisted anyway) are marked and explained; they are
+     purged at the next real browser start (core/site-locks.js clearSessionWhitelist). ─── -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Safe Surfing Sentinel — Whitelist</title>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="whitelist.css">
+</head>
+<body>
+  <header class="page-hdr">
+    <img src="../icons/sss_on_48.png" width="32" height="32" alt="">
+    <div>
+      <h1>Whitelist</h1>
+      <p class="sub">Sites where every protection is off. Everything else is automatic — there is nothing else to configure.</p>
+    </div>
+  </header>
+
+  <section class="add-bar">
+    <input id="hostInput" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+    <button id="addBtn" type="button" class="btn btn-primary">Add</button>
+  </section>
+
+  <section class="tools-bar">
+    <input id="searchInput" type="search" placeholder="Search…" autocomplete="off">
+    <span class="count" id="countText"></span>
+    <span class="spacer"></span>
+    <button id="exportBtn" type="button" class="link-btn">Export…</button>
+    <button id="importBtn" type="button" class="link-btn">Import…</button>
+    <input id="importFile" type="file" accept="application/json" hidden>
+    <button id="clearBtn" type="button" class="link-btn link-btn-danger">Delete all…</button>
+  </section>
+
+  <p id="pageStatus" class="status-line" role="status" hidden></p>
+
+  <ul id="siteList" class="site-list"></ul>
+  <p id="emptyText" class="empty-text" hidden>No sites whitelisted yet.</p>
+
+  <!-- "Delete all" confirmation (no native confirm() — consistent styling, keyboard-safe) -->
+  <div id="confirmDialog" class="confirm-backdrop" hidden>
+    <div class="confirm-box" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <p id="confirmTitle" class="confirm-title">Delete the whole whitelist?</p>
+      <p class="confirm-body">This removes every whitelisted site. It cannot be undone.</p>
+      <div class="confirm-actions">
+        <button id="confirmCancel" type="button" class="btn">Cancel</button>
+        <button id="confirmOk" type="button" class="btn btn-danger">Delete all</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="focus-ring.js" type="module"></script>
+  <script src="whitelist.js" type="module"></script>
+</body>
+</html>

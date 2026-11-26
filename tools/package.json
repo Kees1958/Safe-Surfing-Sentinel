@@ -1,0 +1,15 @@
+{
+  "name": "sss-tools",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "description": "Build, verification and release tools for Safe Surfing Sentinel (never shipped).",
+  "scripts": {
+    "build:icons": "node build-icons.mjs",
+    "package-release": "node package-release.mjs"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "sharp": "^0.33.0"
+  }
+}

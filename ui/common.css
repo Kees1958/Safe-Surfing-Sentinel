@@ -1,0 +1,124 @@
+/* ── ui/common.css — shared tokens and basics (3P-Matrix-lite dark theme) ──── */
+:root {
+  --bg:       #0F1117;
+  --surface:  #181C26;
+  --border:   #252A38;
+  --border-2: #3A4152;
+  --muted:    #C0C7D4;
+  /* 4.7.5: was #7C8496 — 4.54:1 against --surface, which clears WCAG AA's 4.5:1 minimum for normal
+     text by only 0.04, so small (11px) .hint-line text on it reads as too faint in practice despite
+     "passing". #9CA5B9 gives 6.89:1 on --surface — real headroom, not a bare minimum — while staying
+     visibly a step down from --muted (10.03:1) and --bright (17:1), so the three-tier hierarchy holds. */
+  --dim:      #9CA5B9;
+  --bright:   #FFFFFF;
+  --yellow:   #FFD84D;   /* section titles */
+  --allow:    #16A34A;   /* allow bullets */
+  --block:    #F87171;   /* block bullets */
+  --mint:     #6EE7B7;   /* Trust this site, checkboxes */
+  /* Warning-window buttons (4.4.6), ONE scheme for the site warning, the download warning and the blocked-download
+     notice: colour follows risk — safe green, careful yellow-on-grey, risky orange (classes btn-safe/-careful/-risky below) */
+  --choice-safe:         #4ADE80;   /* Go back */
+  --choice-careful-bg:   #2A2F3C;   /* Continue once — dark grey fill … */
+  --choice-careful-text: #FFE14D;   /* … bright yellow bold text and border */
+  --choice-risky:        #FF8A1F;   /* Trust this site */
+  --choice-btn-width:    176px;     /* EVERY warning-window button has exactly this size, in all three windows … */
+  --choice-btn-height:   44px;      /* … (fits the longest label, "Check download at VT") */
+  --choice-btn-font:     14px;
+  --link:     #93C5FD;
+  --accent:   #FACC15;   /* set per level by JS */
+  --radius:   6px;
+  --pad:      16px;
+  --font:     Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:     "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* "This page" box signal colours (ui/popup.js .suspect/.danger) and the full-page warning dialog's
+     own backdrop/page background — single source of truth so the light override below only has to
+     touch these two blocks, never a hardcoded colour buried in popup.css/warning.css. */
+  --suspect-bg:   rgba(194, 65, 12, 0.18);
+  --suspect-text: #FDBA74;
+  --danger-bg:    rgba(185, 28, 28, 0.18);
+  --danger-text:  var(--block);
+  --page-bg:      #080A0F;                 /* ui/warning.html's <body> — a shade darker than --bg */
+  --backdrop-bg:  rgba(8, 10, 15, 0.78);    /* dialog overlay behind ui/warning.html's .backdrop */
+  --block-strong: #FCA5A5;                 /* ui/whitelist.css .link-btn-danger:hover — a stronger/brighter --block */
+}
+/* `color-scheme` must be declared explicitly, one value per branch (not just assumed from the
+   media query above): without it Chrome renders native form-control chrome — placeholder text,
+   focus rings, scrollbars, the checkbox/file-input look — with its LIGHT-mode assumptions no
+   matter what colours the page's own CSS uses, which is what made inputs look washed-out/
+   low-contrast in the (previously dark-only) popup and whitelist pages. */
+:root { color-scheme: dark; }
+
+/* Follows the browser/OS colour scheme (manifest min_chrome_version 120 supports
+   prefers-color-scheme in extension pages) — one override block, every page themes together
+   because every page's CSS reads these same custom properties and none hardcodes a colour.
+   Every text/background pair below is checked against WCAG AA (4.5:1 normal text, 3:1 large/UI);
+   ratios noted were a bare pass or needed adjusting — anything not noted already clears AA with
+   headroom using the same shade reasoning as the dark palette above. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg:       #FFFFFF;
+    --surface:  #F3F4F6;
+    --border:   #E2E4E9;
+    --border-2: #CBD0DA;
+    --muted:    #4B5563;     /* 7.55:1 on --bg */
+    /* #6B7280 (Tailwind gray-500) measured only 4.83:1 on white — a bare AA pass, same "too faint
+       for small hint text in practice" problem the dark --dim comment above already documents.
+       #5B636E gives 6.08:1 — real headroom, still a visible step lighter than --muted. */
+    --dim:      #5B636E;
+    --bright:   #0F1117;
+    --yellow:   #92400E;     /* 7.09:1 on --bg */
+    --allow:    #15803D;     /* 5.02:1 on --bg — bullet/accent colour, not paragraph text */
+    /* #DC2626 measured 4.83:1 on white, a bare AA pass; #B91C1C gives 6.47:1. Reused as
+       --danger-text too (single source of truth — see dark palette's --danger-text above). */
+    --block:    #B91C1C;
+    /* #059669 measured only 3.77:1 on white — fails AA for text (.status-line uses --mint as text
+       colour, not just as the toggle fill, so the stricter 4.5:1 text bar applies). #047857 gives
+       5.48:1 and still reads as a clear mint/emerald green for the toggle fill. */
+    --mint:     #047857;
+    --choice-safe:         #15803D;
+    --choice-careful-bg:   #FEF3C7;
+    --choice-careful-text: #92400E;
+    --choice-risky:        #C2410C;
+    --link:     #2563EB;     /* 5.17:1 on --bg */
+    --suspect-bg:   rgba(251, 146, 60, 0.18);
+    --suspect-text: #9A3412;
+    --danger-bg:    rgba(248, 113, 113, 0.18);
+    --danger-text:  var(--block);
+    --page-bg:      #F3F4F6;
+    --backdrop-bg:  rgba(15, 23, 42, 0.45);
+    --block-strong: #991B1B;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--muted); font-family: var(--font); font-size: 13px; }
+a { color: var(--link); } a:hover { color: var(--bright); }
+button { font-family: inherit; }
+/* Explicit placeholder styling — belt-and-braces alongside `color-scheme` above: native
+   placeholder colour must never fall back to a UA default that assumes a light background. */
+::placeholder { color: var(--dim); opacity: 1; }
+/* Guard: the [hidden] attribute must always win over component display rules
+   (e.g. .prot-panel { display: flex } would otherwise keep a "hidden" panel visible). */
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mono { font-family: var(--mono); }
+/* Status line (ui/status-line.js): action outcome, clears itself. Error = readable red on dark. */
+.status-line { min-height: 1em; font-size: 12px; color: var(--mint); margin: 0; }
+.status-line.status-error, .status.status-error { color: var(--block); }
+.section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yellow); }
+
+/* Warning-window buttons (4.4.6) — shared by warning.html, download-warning.html, download-blocked.html.
+   Risk rises left to right: safe (filled green, the keyboard default) · careful (this visit only: dark grey,
+   bright yellow bold text + border) · risky (you accept the risk / permanent: solid orange).
+   ONE size for all of them (tokens above): same width, same height, same 1px border (colour = fill for the
+   filled ones), so no window looks uneven. `.btn.x` outranks each page's own .btn rules. */
+.btn.btn-safe, .btn.btn-careful, .btn.btn-risky {
+  box-sizing: border-box; width: var(--choice-btn-width); height: var(--choice-btn-height);
+  padding: 0 8px; font-size: var(--choice-btn-font); font-weight: 700; border: 1px solid transparent; color: #0F1117;
+}
+.btn.btn-safe { background: var(--choice-safe); border-color: var(--choice-safe); }
+.btn.btn-careful { background: var(--choice-careful-bg); color: var(--choice-careful-text); border-color: var(--choice-careful-text); }
+.btn.btn-risky { background: var(--choice-risky); border-color: var(--choice-risky); }
+.btn:focus-visible { outline: none; }                                                       /* initial (script) focus: silent — all buttons look the same */
+.kbd-nav .btn:focus-visible { outline: 2px solid var(--bright); outline-offset: 2px; }     /* once the user tabs: a clear ring (ui/focus-ring.js) */
+@media (max-width: 640px) { .btn.btn-safe, .btn.btn-careful, .btn.btn-risky { width: 100%; } }   /* narrow screens: stacked, full width */

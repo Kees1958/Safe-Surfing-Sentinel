@@ -1,4 +1,4 @@
-# Safe-Surfing-Sentinel
+# Safe Surfing Sentinel
 Zero configuration extension which warns users for SCAMS, SNOOPING and SKIMMING
 
 Safe Surfing Sentinel is zero configuration meaning no settings pages full of toggles and settings you don't understand, no decisions to get wrong. Install it, and it quietly gets to work.

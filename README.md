@@ -25,18 +25,18 @@ Fake "your account is locked" overlays, keyboard-lock tricks that won't let you 
 Fake tracking-pixel overlays and payment forms that don't belong to the site — the Magecart-style trick behind real-world card-skimming scams — plus password fields quietly rigged to submit somewhere else. Sentinel watches closely on banking and payment pages and steps in before anything gets sent.
 
 
-One whitelist. That's it. 
+# One whitelist. That's it. 
 
 If Sentinel's being overly cautious on a site you trust, add it to the whitelist and it leaves that site alone. That's the entire configuration surface — because you shouldn't need a manual to feel safe online.
 
 
 
-WHAT IT DOES NOT
+# WHAT IT DOES NOT
 
 It doesn't watch you. No browsing history is kept, no analytics, no "phoning home." Everything it checks, it checks locally, on your own device, against lists built into the extension itself.
 It doesn't nag you. No up-sells, no "upgrade to premium," no account to create. It's free, it's open source, and it stays out of your way until it actually needs to warn you about something.
 
-WHO THIS IS FOR
+# WHO THIS IS FOR
 
 Anyone who wants real protection from the sketchier corners of the web without becoming their own IT department to get it working. Anyone who's ever clicked a link a half-second before thinking "wait, was that a good idea?"
 

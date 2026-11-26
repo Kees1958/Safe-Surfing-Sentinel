@@ -41,3 +41,4 @@ WHO THIS IS FOR
 Anyone who wants real protection from the sketchier corners of the web without becoming their own IT department to get it working. Anyone who's ever clicked a link a half-second before thinking "wait, was that a good idea?"
 
 
+<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/a7c306d0-700b-43d0-9d75-c14d1047f953" />

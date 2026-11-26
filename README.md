@@ -5,22 +5,22 @@ Safe Surfing Sentinel is zero configuration meaning no settings pages full of to
 
 WHAT IT DOES
 
-Blocks unusual and suspicious third parties.
+# Blocks unusual and suspicious third parties.
 
 A huge amount of what makes the web slow, creepy, or dangerous isn't the site you're on — it are the frames (with code) and scripts that websites quietly load from somewhere else. Safe Surfing Sentinel blocks the ones which sneak in through strange unusual connections or from a Top Level Domains with a track record of abuse, automatically.
 
 
-Warns you before you walk into trouble. 
+# Warns you before you walk into trouble. 
 
 Phishing pages, fake "your download is ready" scams, lookalike domains designed to fool you at a glance — Sentinel checks the site you're about to visit against known patterns and abused domains, and steps in with a clear warning before you hand over anything you'll regret.
 
 
-Catches pages trying to trap you. 
+# Catches pages trying to trap you. 
 
 Fake "your account is locked" overlays, keyboard-lock tricks that won't let you leave, fulls-creen scare-ware — the kind of page designed to panic you into calling a scam number or installing something nasty. Sentinel spots the pattern and gives you your browser back.
 
 
-Catches skimmers trying to steal your card of banking data.
+# Catches skimmers trying to steal your card of banking data.
 
 Fake tracking-pixel overlays and payment forms that don't belong to the site — the Magecart-style trick behind real-world card-skimming scams — plus password fields quietly rigged to submit somewhere else. Sentinel watches closely on banking and payment pages and steps in before anything gets sent.
 

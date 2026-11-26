@@ -5,7 +5,7 @@ Safe Surfing Sentinel is zero configuration meaning no settings pages full of to
 
 WHAT IT DOES
 
-Blocks the bad third parties.
+Blocks the unusual and suspicious third parties.
 
 A huge amount of what makes the web slow, creepy, or dangerous isn't the site you're on — it are the frames and scripts that websites quietly load from somewhere else. Safe Surfing Sentinel blocks the ones which come strange unusual connections or from a Top Level Domain with a track record of abuse, automatically.
 

@@ -20,6 +20,11 @@ Catches pages trying to trap you.
 Fake "your account is locked" overlays, keyboard-lock tricks that won't let you leave, fulls-creen scare-ware — the kind of page designed to panic you into calling a scam number or installing something nasty. Sentinel spots the pattern and gives you your browser back.
 
 
+Catches skimmers trying to steal your card of banking data.
+
+Fake tracking-pixel overlays and payment forms that don't belong to the site — the Magecart-style trick behind real-world card-skimming scams — plus password fields quietly rigged to submit somewhere else. Sentinel watches closely on banking and payment pages and steps in before anything gets sent.
+
+
 One whitelist. That's it. 
 
 If Sentinel's being overly cautious on a site you trust, add it to the whitelist and it leaves that site alone. That's the entire configuration surface — because you shouldn't need a manual to feel safe online.
